@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WooshPay GameShop 商业化 Demo</title>
+    <link rel="stylesheet" href="./styles.css?v=lite-v2">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#home" data-view-link="home" aria-label="WooshPay GameShop">
+        <span class="brand-mark">W</span>
+        <span>
+          <strong>WooshPay GameShop</strong>
+          <small>Commercial Demo</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="#home" data-view-link="home">方案官网</a>
+        <a href="#shop" data-view-link="shop">玩家充值站</a>
+        <a href="#admin" data-view-link="admin">运营后台</a>
+      </nav>
+      <span class="demo-badge">DEMO</span>
+    </header>
+
+    <main>
+      <section id="view-home" class="view is-active" aria-labelledby="home-title">
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">WooshPay 游戏充值站解决方案</p>
+            <h1 id="home-title">为出海游戏搭建可运营的官方充值站</h1>
+            <p class="lead">WooshPay GameShop 帮助游戏团队快速上线 Web Shop，将玩家充值、WooshPay 支付、本地化展示、商品配置和营销活动整合到一套可运营的增长系统中。</p>
+            <div class="hero-actions">
+              <a class="primary-btn" href="#shop" data-view-link="shop">体验玩家充值站</a>
+              <a class="secondary-btn" href="#admin" data-view-link="admin">查看运营后台</a>
+            </div>
+            <div class="metric-row" aria-label="关键指标">
+              <div><strong>200+</strong><span>覆盖国家/地区</span></div>
+              <div><strong>数小时</strong><span>搭建演示站</span></div>
+              <div><strong>3</strong><span>核心运营模块</span></div>
+            </div>
+          </div>
+          <div class="hero-visual" aria-label="产品预览">
+            <img src="./assets/mythic-realm.svg" alt="Mythic Realm 游戏视觉">
+            <div class="preview-web-panel">
+              <div class="mini-head">
+                <span>MR</span>
+                <strong>Mythic Realm</strong>
+              </div>
+              <div class="mini-banner">Web 充值专享奖励</div>
+              <div class="mini-product">
+                <span>1,980 钻石</span>
+                <strong>Rp 404.000</strong>
+              </div>
+              <div class="mini-pay">WooshPay 支付体验</div>
+            </div>
+            <div class="preview-panel">
+              <small>今日 GMV</small>
+              <strong>$48,920</strong>
+              <span>支付成功率 97.4%</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading">
+            <p class="eyebrow">为什么现在</p>
+            <h2>第三方支付开放后，游戏出海进入“收入设计”阶段</h2>
+            <p>竞争不再只是买量，而是商品怎么卖、价格怎么定、活动怎么做、玩家怎么长期留存。</p>
+          </div>
+          <div class="insight-grid">
+            <article>
+              <span class="icon-box">01</span>
+              <h3>支付路径回到开发者手中</h3>
+              <p>Web Shop 让官方充值、活动承接和玩家关系从平台内购之外延展开来。</p>
+            </article>
+            <article>
+              <span class="icon-box">02</span>
+              <h3>从统一定价到收入运营</h3>
+              <p>不同地区、用户层级和活动周期需要更灵活的商品包装与展示策略。</p>
+            </article>
+            <article>
+              <span class="icon-box">03</span>
+              <h3>第二商业化系统</h3>
+              <p>官方充值站承接利润、数据和品牌信任，为后续会员和召回运营打基础。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section problem-solution">
+          <div class="section-heading">
+            <p class="eyebrow">商业化痛点</p>
+            <h2>商店解决覆盖，官方充值站解决利润与运营主动权</h2>
+          </div>
+          <div class="two-col-list">
+            <article>
+              <h3>厂商的两难</h3>
+              <ul>
+                <li>平台抽成压缩利润，外部购买引导规则逐步变化。</li>
+                <li>玩家数据难沉淀，难以做高价值玩家分层运营。</li>
+                <li>自建充值站周期长，多语言、多货币、本地支付门槛高。</li>
+              </ul>
+            </article>
+            <article>
+              <h3>GameShop 的解法</h3>
+              <ul>
+                <li>快速上线官方充值站，承接 Web 专享商品与活动。</li>
+                <li>语言、地区、优惠码和活动商品统一展示。</li>
+                <li>后台配置商品、营销和数据看板，运营自助迭代。</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section band">
+          <div class="section-heading compact">
+            <p class="eyebrow">产品闭环</p>
+            <h2>从商品配置到玩家直充，再到活动优化</h2>
+          </div>
+          <div class="loop">
+            <div><strong>商品配置</strong><span>商品、价格、权益说明</span></div>
+            <div><strong>玩家直充</strong><span>UID 识别、本地货币展示</span></div>
+            <div><strong>WooshPay 支付</strong><span>本地化支付体验</span></div>
+            <div><strong>数据看板</strong><span>GMV、地区、热销商品</span></div>
+            <div><strong>营销优化</strong><span>优惠码、活动 banner</span></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading">
+            <p class="eyebrow">全功能覆盖</p>
+            <h2>适配游戏充值站的关键购买场景</h2>
+          </div>
+          <div class="scenario-grid">
+            <span>一次性购买</span>
+            <span>固定面额充值</span>
+            <span>礼包购买</span>
+            <span>首充赠送</span>
+            <span>限购商品</span>
+            <span>优惠码活动</span>
+            <span>限时礼包</span>
+            <span>分人群定价</span>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading">
+            <p class="eyebrow">商业化能力</p>
+            <h2>不是只建一个网站，而是搭一套可运营的充值增长系统</h2>
+          </div>
+          <div class="capability-grid">
+            <article>
+              <h3>提升利润空间</h3>
+              <p>通过官方 Web Shop 承接更多直充场景，减少对单一应用商店路径的依赖。</p>
+            </article>
+            <article>
+              <h3>提升支付转化</h3>
+              <p>使用 WooshPay 支持本地化支付体验，降低玩家购买决策门槛。</p>
+            </article>
+            <article>
+              <h3>提升运营效率</h3>
+              <p>运营人员可配置商品、活动和上下架状态，减少重复开发需求。</p>
+            </article>
+            <article>
+              <h3>沉淀玩家资产</h3>
+              <p>官方站承接玩家 UID、活动参与和付费表现，为高价值玩家运营打基础。</p>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section id="view-shop" class="view" aria-labelledby="shop-title">
+        <section class="shop-stage web-shop-stage">
+          <div class="web-shop">
+            <header class="shop-top web-shop-top">
+              <div class="game-id">
+                <span>MR</span>
+                <div><strong>Mythic Realm</strong><small>官方充值中心 · Official Store</small></div>
+              </div>
+              <div class="shop-controls" aria-label="充值站设置">
+                <label>
+                  <span>语言</span>
+                  <select id="language-select" aria-label="language">
+                    <option value="en">English</option>
+                    <option value="zh">简体中文</option>
+                    <option value="th">ภาษาไทย</option>
+                    <option value="ar">العربية</option>
+                    <option value="es">Español</option>
+                    <option value="pt">Português</option>
+                  </select>
+                </label>
+                <label>
+                  <span>国家/地区</span>
+                  <select id="region-select" aria-label="region">
+                    <option value="US">🇺🇸 United States · USD</option>
+                    <option value="BR">🇧🇷 Brazil · BRL</option>
+                    <option value="ID">🇮🇩 Indonesia · IDR</option>
+                    <option value="SA">🇸🇦 Saudi Arabia · SAR</option>
+                    <option value="TH">🇹🇭 Thailand · THB</option>
+                    <option value="EU">🇪🇺 Germany (EU) · EUR</option>
+                  </select>
+                </label>
+              </div>
+            </header>
+
+            <div class="shop-layout">
+              <div class="shop-main">
+                <section class="game-banner web-game-banner">
+                  <img src="./assets/mythic-realm.svg" alt="Mythic Realm 活动视觉">
+                  <div>
+                    <span>WEB EXCLUSIVE</span>
+                    <h1 id="shop-title">官方充值站，支持当地货币与充值好礼</h1>
+                    <p>选择国家后自动展示当地货币，使用 WooshPay 完成支付，固定充值档位、首充赠送和限时礼包统一结算。</p>
+                  </div>
+                </section>
+
+                <section class="shop-value-strip" aria-label="充值站能力">
+                  <div>
+                    <strong>当地货币展示</strong>
+                    <span id="pricing-note">ID · IDR</span>
+                  </div>
+                  <div>
+                    <strong>精选商品包装</strong>
+                    <span>固定面额 · 首充赠送 · 限时礼包</span>
+                  </div>
+                  <div>
+                    <strong>WooshPay Checkout</strong>
+                    <span>优惠码与订单摘要实时联动</span>
+                  </div>
+                </section>
+
+                <section class="catalog-section catalog-section-lite">
+                  <div class="shop-section-head">
+                    <div>
+                      <h2>精选充值商品</h2>
+                      <p>先展示最适合商业化验证的商品类型：固定面额充值、首充赠送和限时礼包。</p>
+                    </div>
+                    <span>国家切换后价格实时换算</span>
+                  </div>
+                  <div id="shop-products" class="catalog-grid"></div>
+                </section>
+              </div>
+
+              <aside class="checkout-sidebar">
+                <section class="coupon-panel" aria-label="优惠码">
+                  <div class="shop-section-head">
+                    <h2>优惠码</h2>
+                    <span id="coupon-status">WOOSH10 可用</span>
+                  </div>
+                  <div class="coupon-row">
+                    <input id="coupon-code" value="WOOSH10" aria-label="优惠码">
+                    <button type="button" id="apply-coupon">应用</button>
+                  </div>
+                  <div class="coupon-chips" id="coupon-chips"></div>
+                </section>
+
+                <section class="checkout-box">
+                  <label for="uid">玩家 ID / 游戏 UID</label>
+                  <div>
+                    <input id="uid" value="MR-2048-7761" aria-label="玩家 ID / 游戏 UID">
+                    <button type="button" id="pay-button">Buy Now</button>
+                  </div>
+                  <div class="checkout-summary" aria-label="订单摘要">
+                    <p><span>当前商品</span><strong id="summary-product">600 钻石</strong></p>
+                    <p><span>商品金额</span><strong id="summary-subtotal">Rp 135.000</strong></p>
+                    <p><span>活动优惠</span><strong id="summary-discount">- Rp 13.500</strong></p>
+                    <p class="summary-total"><span>应付金额</span><strong id="summary-total">Rp 121.500</strong></p>
+                  </div>
+                  <p>由 WooshPay 提供支付体验，到账权益以游戏侧发放结果为准。</p>
+                </section>
+
+                <section class="shop-notes web-shop-notes">
+                  <p class="eyebrow">Global Web Shop</p>
+                  <ul class="clean-list">
+                    <li><strong>语言展示：</strong>语言切换用于演示本地化入口，不影响支付流程。</li>
+                    <li><strong>地区与货币：</strong>国家/地区决定商品与订单摘要中的展示货币。</li>
+                    <li><strong>权益发放：</strong>实际到账以游戏侧商品体系或发货接口为准。</li>
+                  </ul>
+                </section>
+              </aside>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="view-admin" class="view" aria-labelledby="admin-title">
+        <section class="console">
+          <aside class="console-nav">
+            <p>Operations</p>
+            <button type="button" class="is-active" data-admin-tab="dashboard">数据看板</button>
+            <button type="button" data-admin-tab="products">商品</button>
+            <button type="button" data-admin-tab="marketing">营销中心</button>
+          </aside>
+          <div class="console-main">
+            <header class="console-head">
+              <div>
+                <h1 id="admin-title">WooshPay GameShop Console</h1>
+                <p>Mythic Realm · 官方充值站 · 零代码运营</p>
+              </div>
+              <span class="status-dot">系统正常</span>
+            </header>
+
+            <section class="admin-tab is-active" data-admin-panel="dashboard">
+              <div class="kpi-grid">
+                <article><span>今日流水 GMV</span><strong id="kpi-gmv">$48,920</strong><small id="kpi-gmv-note">含当前模拟订单</small></article>
+                <article><span>今日订单数</span><strong id="kpi-orders">3,184</strong><small>玩家直充订单</small></article>
+                <article><span>支付成功率</span><strong id="kpi-success">97.4%</strong><small>WooshPay 体验</small></article>
+                <article><span>ARPPU</span><strong id="kpi-arppu">$15.36</strong><small>近 24 小时</small></article>
+              </div>
+              <div class="dashboard-grid">
+                <article class="chart-card">
+                  <div class="card-title-row">
+                    <h3>近 7 日流水趋势</h3>
+                    <span>单位：USD</span>
+                  </div>
+                  <div class="bar-chart" id="revenue-chart" aria-label="近 7 日流水趋势"></div>
+                  <p class="chart-caption">横轴为自然日，纵轴为当日流水规模。</p>
+                </article>
+                <article class="chart-card">
+                  <h3>地区流水占比</h3>
+                  <div class="region-list" id="region-list"></div>
+                </article>
+                <article class="chart-card">
+                  <h3>热销商品</h3>
+                  <div class="data-table compact-table" id="top-products" aria-label="热销商品"></div>
+                </article>
+                <article class="chart-card">
+                  <h3>支付成功率监控</h3>
+                  <div class="data-table success-table" id="success-monitor" aria-label="支付成功率监控"></div>
+                </article>
+              </div>
+              <article class="chart-card order-feed">
+                <h3>最近订单</h3>
+                <div id="order-feed"></div>
+              </article>
+            </section>
+
+            <section class="admin-tab" data-admin-panel="products">
+              <div class="panel-title">
+                <div>
+                  <h2>商品</h2>
+                  <p>配置玩家充值站展示的商品、价格、权益说明和上下架状态。</p>
+                </div>
+                <button class="primary-btn small" type="button" id="add-product">添加商品</button>
+              </div>
+              <div class="product-admin">
+                <div class="product-table" role="table" aria-label="商品列表">
+                  <div class="table-row table-head" role="row">
+                    <span>商品</span><span>类型</span><span>基准价</span><span>赠送</span><span>本月销量</span><span>状态</span><span>操作</span>
+                  </div>
+                  <div id="product-rows"></div>
+                </div>
+                <aside class="edit-panel">
+                  <p class="eyebrow">商品详情</p>
+                  <h3 id="detail-name">600 钻石</h3>
+                  <div class="field-grid">
+                    <label>展示价格<input id="edit-price" value="$9.99" aria-label="展示价格"></label>
+                    <label>商品类型<input id="edit-type" value="钻石" aria-label="商品类型"></label>
+                    <label>赠送<input id="edit-bonus" value="额外 +50%" aria-label="赠送"></label>
+                    <label>发放方式<input id="edit-delivery" value="游戏侧发货 / API 回调" aria-label="发放方式"></label>
+                    <label class="wide">权益说明<input id="benefit-input" value="600 crystals + bonus 50%" aria-label="权益说明"></label>
+                  </div>
+                  <p class="logic-note">权益说明可在充值站展示；实际发放结果以游戏侧商品体系或发货接口为准。</p>
+                  <div class="panel-actions">
+                    <button type="button" id="save-product">保存修改</button>
+                    <button type="button" id="preview-product">预览玩家站</button>
+                    <button type="button" id="toggle-product-status">下架</button>
+                  </div>
+                </aside>
+              </div>
+            </section>
+
+            <section class="admin-tab" data-admin-panel="marketing">
+              <div class="panel-title">
+                <div>
+                  <h2>营销中心</h2>
+                  <p>管理充值活动、优惠码和活动 Banner。</p>
+                </div>
+                <button class="primary-btn small" type="button">新建活动</button>
+              </div>
+              <div class="marketing-grid" id="marketing-grid">
+              </div>
+              <div class="banner-queue">
+                <h3>充值站 Banner 队列</h3>
+                <div><span>Web 充值专享奖励</span><b>主推</b></div>
+                <div><span>新用户首充 5 折</span><b>次位</b></div>
+                <div><span>限时礼包返场</span><b>备用</b></div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <div class="product-modal" id="product-modal" aria-hidden="true">
+      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="close-modal" type="button" aria-label="关闭">×</button>
+        <h2 id="modal-title">添加商品</h2>
+        <div class="field-grid">
+          <label>商品名称<input id="new-product-name" value="新节日礼包" aria-label="商品名称"></label>
+          <label>展示价格<input id="new-product-price" value="$19.99" aria-label="展示价格"></label>
+          <label>商品类型<input id="new-product-type" value="限时礼包" aria-label="商品类型"></label>
+          <label>活动标签<input id="new-product-tag" value="限时" aria-label="活动标签"></label>
+          <label class="wide">权益说明<input id="new-product-benefit" value="1,980 💎 + 限定头像框" aria-label="权益说明"></label>
+          <label class="wide">发放方式<input id="new-product-delivery" value="游戏侧发货 / API 回调" aria-label="发放方式"></label>
+        </div>
+        <div class="panel-actions">
+          <button type="button" id="save-draft-product">保存草稿</button>
+          <button class="primary-btn small" type="button" id="publish-product">上架商品</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-modal" id="payment-modal" aria-hidden="true">
+      <div class="modal-panel receipt-panel" role="dialog" aria-modal="true" aria-labelledby="payment-title">
+        <button class="close-modal" type="button" aria-label="关闭" data-close-payment>×</button>
+        <p class="eyebrow">WooshPay Checkout</p>
+        <h2 id="payment-title">支付成功</h2>
+        <div class="receipt-lines">
+          <p><span>订单号</span><strong id="receipt-id">WP-0000</strong></p>
+          <p><span>玩家 UID</span><strong id="receipt-uid">MR-2048-7761</strong></p>
+          <p><span>充值商品</span><strong id="receipt-product">600 钻石</strong></p>
+          <p><span>支付金额</span><strong id="receipt-total">Rp 121.500</strong></p>
+          <p><span>到账说明</span><strong id="receipt-benefit">游戏侧发货 / API 回调</strong></p>
+        </div>
+        <div class="panel-actions">
+          <button type="button" data-close-payment>继续逛逛</button>
+          <button class="primary-btn small" type="button" id="receipt-admin">查看后台数据</button>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js?v=lite-v2"></script>
+  </body>
+</html>

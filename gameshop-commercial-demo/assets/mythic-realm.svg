@@ -1,0 +1,67 @@
+<svg width="1440" height="840" viewBox="0 0 1440 840" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Mythic Realm fantasy key visual</title>
+  <desc id="desc">A stylized fantasy city, crystals, and a hero silhouette for a fictional game recharge demo.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1440" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111B3F"/>
+      <stop offset="0.5" stop-color="#2458FF"/>
+      <stop offset="1" stop-color="#1BA6B3"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="798" y1="117" x2="1008" y2="367" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DDE7FF"/>
+      <stop offset="1" stop-color="#8DD9FF"/>
+    </linearGradient>
+    <linearGradient id="crystal" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#C7D2FE"/>
+      <stop offset="1" stop-color="#67E8F9"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FFCE8A"/>
+      <stop offset="1" stop-color="#FF8A3D"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="1440" height="840" fill="url(#sky)"/>
+  <path d="M0 546C141 498 252 493 374 527C519 567 623 545 756 493C878 445 1049 416 1197 461C1293 490 1361 535 1440 560V840H0V546Z" fill="#172554"/>
+  <path d="M0 620C168 572 286 572 445 619C590 662 746 634 916 579C1113 515 1274 570 1440 647V840H0V620Z" fill="#101623"/>
+  <circle cx="900" cy="240" r="136" fill="url(#sun)" opacity="0.92"/>
+  <circle cx="900" cy="240" r="190" fill="#67E8F9" opacity="0.2" filter="url(#soft)"/>
+  <path d="M749 450L793 323L829 450H749Z" fill="#243B78"/>
+  <path d="M807 450L854 283L909 450H807Z" fill="#3152A4"/>
+  <path d="M884 450L948 332L1006 450H884Z" fill="#1E3472"/>
+  <path d="M708 473H1039V522H708V473Z" fill="#172554"/>
+  <path d="M744 455H1010V484H744V455Z" fill="#2C5BBD"/>
+  <rect x="777" y="392" width="28" height="92" fill="#B9C8FF"/>
+  <rect x="853" y="352" width="30" height="132" fill="#DDE7FF"/>
+  <rect x="931" y="402" width="28" height="82" fill="#B9C8FF"/>
+  <path d="M124 541L212 413L301 541H124Z" fill="#263F86"/>
+  <path d="M259 544L387 362L515 544H259Z" fill="#172554"/>
+  <path d="M352 541L474 421L598 541H352Z" fill="#3152A4"/>
+  <g opacity="0.92">
+    <path d="M196 280L226 196L258 280L228 374L196 280Z" fill="url(#crystal)"/>
+    <path d="M226 196L258 280L226 303L196 280L226 196Z" fill="#CFFAFE" opacity="0.7"/>
+    <path d="M1206 352L1238 266L1275 352L1240 453L1206 352Z" fill="url(#crystal)"/>
+    <path d="M1238 266L1275 352L1240 375L1206 352L1238 266Z" fill="#CFFAFE" opacity="0.72"/>
+    <path d="M1150 238L1172 178L1195 238L1173 306L1150 238Z" fill="#FFB45F"/>
+  </g>
+  <g opacity="0.38">
+    <path d="M86 155C170 116 246 118 320 161" stroke="#C7D2FE" stroke-width="3"/>
+    <path d="M1038 118C1104 92 1167 96 1225 128" stroke="#67E8F9" stroke-width="3"/>
+    <path d="M1088 184C1160 156 1222 162 1288 197" stroke="#C7D2FE" stroke-width="2"/>
+  </g>
+  <path d="M514 610C553 575 582 551 618 521C646 498 683 498 710 523C748 558 777 581 811 610H514Z" fill="#172C32"/>
+  <path d="M642 459C664 459 682 478 682 502V576H600V502C600 478 619 459 642 459Z" fill="#0C2025"/>
+  <path d="M616 504C617 473 630 452 644 452C657 452 672 473 674 504L642 481L616 504Z" fill="#132D34"/>
+  <path d="M582 644C618 614 664 615 700 644L734 840H548L582 644Z" fill="#0B181D"/>
+  <path d="M642 479L619 612L646 639L676 612L642 479Z" fill="url(#gold)" opacity="0.86"/>
+  <path d="M457 702C603 665 781 673 950 725C1099 771 1265 785 1440 748V840H0V749C168 788 306 742 457 702Z" fill="#08161A"/>
+  <g opacity="0.76">
+    <circle cx="790" cy="420" r="5" fill="#FDE68A"/>
+    <circle cx="869" cy="390" r="4" fill="#FDE68A"/>
+    <circle cx="953" cy="432" r="5" fill="#FDE68A"/>
+    <circle cx="226" cy="393" r="6" fill="#A7F3F0"/>
+    <circle cx="1238" cy="470" r="6" fill="#A7F3F0"/>
+  </g>
+</svg>
