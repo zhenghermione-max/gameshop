@@ -1,4 +1,4 @@
-const STORAGE_KEY = "wooshpay-gameshop-lite-v4";
+const STORAGE_KEY = "wooshpay-gameshop-lite-v3";
 
 const defaultState = {
   view: "home",
@@ -9,7 +9,6 @@ const defaultState = {
   couponCode: "WOOSH10",
   redeemCode: "",
   redeemStatus: "",
-  redeemExpanded: false,
   selectedPaymentMethod: "dana",
   player: {
     uid: "MR-2048-7761",
@@ -152,23 +151,14 @@ const successRows = [
 ];
 
 const productGroups = [
-  { key: "topup", types: ["固定面额充值"] },
-  { key: "campaign", types: ["首充赠送", "限时礼包"] }
+  { title: "充值档位", note: "稳定售卖的基础充值档，适合验证区域价格和转化。", types: ["固定面额充值"] },
+  { title: "活动推荐", note: "首充赠送与限时礼包承接运营活动，突出权益和稀缺感。", types: ["首充赠送", "限时礼包"] }
 ];
 
 const redeemCodes = {
-  GIFT300: {
-    zh: "已兑换 300 💎 礼品码，权益将由游戏侧发放。",
-    en: "300 💎 gift code redeemed. Rewards will be delivered by the game."
-  },
-  VIP7: {
-    zh: "已兑换 7 天 VIP 体验卡，权益将由游戏侧发放。",
-    en: "7-day VIP pass redeemed. Rewards will be delivered by the game."
-  },
-  SKIN2026: {
-    zh: "已兑换限定皮肤兑换码，权益将由游戏侧发放。",
-    en: "Limited skin code redeemed. Rewards will be delivered by the game."
-  }
+  GIFT300: "已兑换 300 💎 礼品码，权益将由游戏侧发放。",
+  VIP7: "已兑换 7 天 VIP 体验卡，权益将由游戏侧发放。",
+  SKIN2026: "已兑换限定皮肤兑换码，权益将由游戏侧发放。"
 };
 
 const paymentMethodsByMarket = {
@@ -208,330 +198,34 @@ const paymentMethodsByMarket = {
   ]
 };
 
-const languageOptionLabels = {
-  zh: {
-    en: "英语",
-    zh: "简体中文",
-    th: "泰语",
-    ar: "阿拉伯语",
-    es: "西班牙语",
-    pt: "葡萄牙语"
-  },
-  en: {
-    en: "English",
-    zh: "Chinese",
-    th: "Thai",
-    ar: "Arabic",
-    es: "Spanish",
-    pt: "Portuguese"
-  }
-};
-
-const marketLabels = {
-  zh: {
-    US: "🇺🇸 美国 · USD",
-    BR: "🇧🇷 巴西 · BRL",
-    ID: "🇮🇩 印尼 · IDR",
-    SA: "🇸🇦 沙特阿拉伯 · SAR",
-    TH: "🇹🇭 泰国 · THB",
-    EU: "🇪🇺 德国 (EU) · EUR"
-  },
-  en: {
-    US: "🇺🇸 United States · USD",
-    BR: "🇧🇷 Brazil · BRL",
-    ID: "🇮🇩 Indonesia · IDR",
-    SA: "🇸🇦 Saudi Arabia · SAR",
-    TH: "🇹🇭 Thailand · THB",
-    EU: "🇪🇺 Germany (EU) · EUR"
-  }
-};
-
-const translations = {
-  zh: {
-    navHome: "方案官网",
-    navShop: "玩家充值站",
-    navAdmin: "运营后台",
-    storeSubtitle: "官方充值中心",
-    language: "语言",
-    region: "国家/地区",
-    login: "玩家登录",
-    loggedIn: "已登录 · {account}",
-    switchAccount: "切换",
-    loggedStatus: "已登录",
-    loggedOutStatus: "未登录",
-    shopEyebrow: "网页专享",
-    shopTitle: "官方充值站，支持当地货币与充值好礼",
-    shopHeroCopy: "选择国家后自动展示当地货币，使用 WooshPay 完成支付，固定充值档位、首充赠送和限时礼包统一结算。",
-    valueCurrencyTitle: "当地货币展示",
-    localPricing: "本地定价",
-    valueProductTitle: "精选商品包装",
-    valueProductCopy: "固定面额 · 首充赠送 · 限时礼包",
-    valueCheckoutCopy: "支付方式与金额实时联动",
-    catalogTitle: "精选充值商品",
-    catalogCopy: "先展示最适合商业化验证的商品类型：固定面额充值、首充赠送和限时礼包。",
-    catalogNote: "国家切换后价格实时换算",
-    groupTopupTitle: "充值档位",
-    groupTopupNote: "稳定售卖的基础充值档，适合验证区域价格和转化。",
-    groupCampaignTitle: "活动推荐",
-    groupCampaignNote: "首充赠送与限时礼包承接运营活动，突出权益和稀缺感。",
-    itemCount: "{count} 个商品",
-    selected: "已选择",
-    select: "选择",
-    valueCheckoutTitle: "WooshPay 支付",
-    playerTitle: "玩家账号 / 游戏编号",
-    playerCopy: "登录后再进入结算，游戏编号用于游戏侧发货和订单归因。",
-    redeemTitle: "兑换码 / 充值卡",
-    redeemHint: "如有礼品码，可在这里兑换权益",
-    redeemOptional: "可选",
-    redeemDone: "已兑换",
-    redeemButton: "立即兑换",
-    redeemDefault: "兑换码独立发放权益，不影响当前订单金额。",
-    redeemInvalid: "兑换码无效，请检查后重试",
-    payTitle: "立即支付",
-    checkoutPowered: "由 WooshPay 提供",
-    currentProduct: "当前商品",
-    benefit: "到账权益",
-    itemAmount: "商品金额",
-    originalAmount: "商品原价",
-    autoDiscount: "自动活动优惠",
-    totalDue: "应付金额",
-    checkoutButton: "去结算",
-    checkoutCopy: "由 WooshPay 提供支付体验，到账权益以游戏侧发放结果为准。",
-    noteLanguageTitle: "语言展示：",
-    noteLanguageCopy: "语言切换用于演示本地化入口，不影响支付流程。",
-    noteRegionTitle: "地区与货币：",
-    noteRegionCopy: "国家/地区决定商品与本次支付中的展示货币。",
-    noteDeliveryTitle: "权益发放：",
-    noteDeliveryCopy: "实际到账以游戏侧商品体系或发货接口为准。",
-    shopNotesEyebrow: "全球充值站",
-    loginEyebrow: "玩家登录",
-    loginTitle: "登录后继续充值",
-    loginCopy: "使用邮箱、手机号或游戏账号完成演示登录；当前版本不连接真实账号系统。",
-    account: "账号",
-    loginLater: "稍后再说",
-    loginContinue: "登录并继续",
-    checkoutTitle: "去结算",
-    checkoutEyebrow: "WooshPay 支付",
-    choosePayment: "请选择支付方式 · {market}",
-    successRateHint: "成功率实时参考",
-    confirmPayment: "立即支付",
-    secureNote: "🔒 256 位加密安全支付 · 由 WooshPay 提供",
-    paymentSuccess: "支付成功",
-    paymentEyebrow: "WooshPay 支付",
-    receiptId: "订单号",
-    receiptUid: "游戏编号",
-    receiptProduct: "充值商品",
-    receiptTotal: "支付金额",
-    receiptBenefit: "到账说明",
-    continueShopping: "继续逛逛",
-    viewAdmin: "查看后台数据",
-    deliveryDefault: "游戏侧发货 / API 回调",
-    toastSelected: "已选择 {product}",
-    toastLanguage: "已切换语言：{language}",
-    toastRegion: "已切换国家/地区：{region}",
-    toastRedeemed: "已兑换 {code}",
-    toastNeedUid: "请先输入游戏编号",
-    toastNoProduct: "请先上架至少一个商品",
-    toastLoginFirst: "请先登录玩家账号",
-    toastLoggedIn: "已登录 {account}",
-    toastPaid: "WooshPay 支付成功，订单已写入后台",
-    toastPaymentMethod: "已选择 {method}",
-    viewHome: "方案官网",
-    viewShop: "玩家充值站",
-    viewAdminToast: "运营后台",
-    toastView: "已切换到{view}"
-  },
-  en: {
-    navHome: "Solution",
-    navShop: "Player Top-up",
-    navAdmin: "Merchant Console",
-    storeSubtitle: "Official Top-up Center",
-    language: "Language",
-    region: "Country / Region",
-    login: "Player Login",
-    loggedIn: "Signed in · {account}",
-    switchAccount: "Switch",
-    loggedStatus: "Signed in",
-    loggedOutStatus: "Not signed in",
-    shopEyebrow: "WEB EXCLUSIVE",
-    shopTitle: "Official top-up with local currency and bonus rewards",
-    shopHeroCopy: "Choose a country to display local currency, pay with WooshPay, and check out top-up tiers, first recharge bonuses, and limited bundles in one flow.",
-    valueCurrencyTitle: "Local Currency",
-    localPricing: "local pricing",
-    valueProductTitle: "Curated Offers",
-    valueProductCopy: "Top-up tiers · First recharge · Limited bundles",
-    valueCheckoutTitle: "WooshPay Checkout",
-    valueCheckoutCopy: "Payment methods and totals update in real time",
-    catalogTitle: "Featured Top-up Products",
-    catalogCopy: "A focused catalog for commercial validation: fixed top-ups, first recharge bonus, and limited-time bundles.",
-    catalogNote: "Prices update after country switch",
-    groupTopupTitle: "Top-up Tiers",
-    groupTopupNote: "Stable top-up packs for validating regional pricing and conversion.",
-    groupCampaignTitle: "Campaign Picks",
-    groupCampaignNote: "First recharge and limited bundles highlight rewards and urgency.",
-    itemCount: "{count} items",
-    selected: "Selected",
-    select: "Select",
-    playerTitle: "Player ID / Game UID",
-    playerCopy: "Sign in before checkout. Player UID is used for game-side delivery and order attribution.",
-    redeemTitle: "Code / Prepaid Card",
-    redeemHint: "Redeem gift codes here when available",
-    redeemOptional: "Optional",
-    redeemDone: "Redeemed",
-    redeemButton: "Redeem",
-    redeemDefault: "Codes deliver separate rewards and do not change the current order amount.",
-    redeemInvalid: "Invalid code. Please check and try again.",
-    payTitle: "Pay Now",
-    checkoutPowered: "Powered by WooshPay",
-    currentProduct: "Current Item",
-    benefit: "Rewards",
-    itemAmount: "Item Amount",
-    originalAmount: "Original Amount",
-    autoDiscount: "Auto Campaign Saving",
-    totalDue: "Total Due",
-    checkoutButton: "Checkout",
-    checkoutCopy: "Payment is powered by WooshPay. Final rewards are delivered by the game.",
-    noteLanguageTitle: "Language: ",
-    noteLanguageCopy: "Language switching demonstrates localization entry points and does not change the payment flow.",
-    noteRegionTitle: "Region & Currency: ",
-    noteRegionCopy: "Country / region controls the display currency for products and checkout.",
-    noteDeliveryTitle: "Reward Delivery: ",
-    noteDeliveryCopy: "Final delivery follows the game-side catalog or fulfillment API.",
-    shopNotesEyebrow: "Global Web Shop",
-    loginEyebrow: "Player Login",
-    loginTitle: "Sign in to continue",
-    loginCopy: "Use an email, phone number, or game account for this demo login. No real account system is connected.",
-    account: "Account",
-    loginLater: "Not now",
-    loginContinue: "Sign in and continue",
-    checkoutTitle: "Checkout",
-    checkoutEyebrow: "WooshPay Checkout",
-    choosePayment: "Choose a payment method · {market}",
-    successRateHint: "Live success rate reference",
-    confirmPayment: "Pay Now",
-    secureNote: "🔒 256-bit encrypted payment · Powered by WooshPay",
-    paymentSuccess: "Payment Successful",
-    paymentEyebrow: "WooshPay Checkout",
-    receiptId: "Order ID",
-    receiptUid: "Player UID",
-    receiptProduct: "Top-up Item",
-    receiptTotal: "Paid Amount",
-    receiptBenefit: "Delivery Note",
-    continueShopping: "Continue",
-    viewAdmin: "View Dashboard",
-    deliveryDefault: "Game-side delivery / API callback",
-    toastSelected: "Selected {product}",
-    toastLanguage: "Language switched: {language}",
-    toastRegion: "Country / region switched: {region}",
-    toastRedeemed: "Redeemed {code}",
-    toastNeedUid: "Please enter a player UID first",
-    toastNoProduct: "Please publish at least one product first",
-    toastLoginFirst: "Please sign in before checkout",
-    toastLoggedIn: "Signed in as {account}",
-    toastPaid: "WooshPay payment succeeded. The order was added to the dashboard.",
-    toastPaymentMethod: "Selected {method}",
-    viewHome: "Solution",
-    viewShop: "Player Top-up",
-    viewAdminToast: "Merchant Console",
-    toastView: "Switched to {view}"
-  }
-};
-
-const productCopies = {
-  zh: {
-    "topup-300": { name: "300 💎", type: "固定面额充值", tag: "基础档位", token: "300", bonus: "300 💎", benefit: "300 钻石", delivery: "游戏侧发货 / API 回调" },
-    "topup-980": { name: "980 💎", type: "固定面额充值", tag: "热销", token: "980", bonus: "+15% = 1,127 💎", benefit: "980 钻石 + 赠送 147 钻石", delivery: "游戏侧发货 / API 回调" },
-    "topup-1980": { name: "1,980 💎", type: "固定面额充值", tag: "高价值", token: "1980", bonus: "+20% = 2,376 💎", benefit: "1,980 钻石 + 赠送 396 钻石", delivery: "游戏侧发货 / API 回调" },
-    "first-300": { name: "首充 300 💎", type: "首充赠送", tag: "首充双倍", token: "2X", bonus: "额外赠送 300 💎", benefit: "300 钻石 + 首充赠送 300 钻石", delivery: "游戏侧发货 / API 回调" },
-    "starter-pack": { name: "新手礼包", type: "限时礼包", tag: "新手推荐", token: "礼包", bonus: "680 💎 + 3 天加速道具", benefit: "680 钻石 + 3 天加速道具", delivery: "游戏侧发货 / API 回调" },
-    "festival-pack": { name: "节日礼包", type: "限时礼包", tag: "活动限时", token: "热卖", bonus: "1,980 💎 + 限定头像框", benefit: "1,980 钻石 + 限定头像框", delivery: "游戏侧发货 / API 回调" }
-  },
-  en: {
-    "topup-300": { name: "300 💎", type: "Fixed Top-up", tag: "Base Tier", token: "300", bonus: "300 💎", benefit: "300 diamonds", delivery: "Game-side delivery / API callback" },
-    "topup-980": { name: "980 💎", type: "Fixed Top-up", tag: "Popular", token: "980", bonus: "+15% = 1,127 💎", benefit: "980 diamonds + 147 bonus diamonds", delivery: "Game-side delivery / API callback" },
-    "topup-1980": { name: "1,980 💎", type: "Fixed Top-up", tag: "High Value", token: "1980", bonus: "+20% = 2,376 💎", benefit: "1,980 diamonds + 396 bonus diamonds", delivery: "Game-side delivery / API callback" },
-    "first-300": { name: "First Recharge 300 💎", type: "First Recharge Bonus", tag: "Double Bonus", token: "2X", bonus: "Extra 300 💎", benefit: "300 diamonds + first recharge bonus 300 diamonds", delivery: "Game-side delivery / API callback" },
-    "starter-pack": { name: "Starter Pack", type: "Limited Bundle", tag: "Starter Pick", token: "PACK", bonus: "680 💎 + 3-day booster", benefit: "680 diamonds + 3-day booster", delivery: "Game-side delivery / API callback" },
-    "festival-pack": { name: "Festival Pack", type: "Limited Bundle", tag: "Limited Time", token: "HOT", bonus: "1,980 💎 + avatar frame", benefit: "1,980 diamonds + limited avatar frame", delivery: "Game-side delivery / API callback" }
-  }
-};
-
-const paymentGroupLabels = {
-  zh: {
-    "Cards": "银行卡",
-    "Wallets": "钱包",
-    "E-wallets": "电子钱包",
-    "QR Payment": "扫码支付",
-    "Instant payment": "即时支付",
-    "Local methods": "本地支付",
-    "Local cards": "本地银行卡",
-    "Bank transfer": "银行转账"
-  }
-};
-
 const elements = {
   viewLinks: document.querySelectorAll("[data-view-link]"),
-  navLabels: document.querySelectorAll("[data-nav-label]"),
   views: {
     home: document.querySelector("#view-home"),
     shop: document.querySelector("#view-shop"),
     admin: document.querySelector("#view-admin")
   },
-  storeSubtitle: document.querySelector("#store-subtitle"),
-  languageLabel: document.querySelector("#language-label"),
-  regionLabel: document.querySelector("#region-label"),
   languageSelect: document.querySelector("#language-select"),
   regionSelect: document.querySelector("#region-select"),
   pricingNote: document.querySelector("#pricing-note"),
-  shopEyebrow: document.querySelector("#shop-eyebrow"),
-  shopTitle: document.querySelector("#shop-title"),
-  shopHeroCopy: document.querySelector("#shop-hero-copy"),
-  valueCurrencyTitle: document.querySelector("#value-currency-title"),
-  valueProductTitle: document.querySelector("#value-product-title"),
-  valueProductCopy: document.querySelector("#value-product-copy"),
-  valueCheckoutTitle: document.querySelector("#value-checkout-title"),
-  valueCheckoutCopy: document.querySelector("#value-checkout-copy"),
-  catalogTitle: document.querySelector("#catalog-title"),
-  catalogCopy: document.querySelector("#catalog-copy"),
-  catalogNote: document.querySelector("#catalog-note"),
   loginButton: document.querySelector("#login-button"),
   sidebarLoginButton: document.querySelector("#sidebar-login-button"),
   playerStatus: document.querySelector("#player-status"),
-  playerTitle: document.querySelector("#player-title"),
-  playerCopy: document.querySelector("#player-copy"),
   shopProducts: document.querySelector("#shop-products"),
   uid: document.querySelector("#uid"),
-  redeemPanel: document.querySelector("#redeem-panel"),
-  toggleRedeem: document.querySelector("#toggle-redeem"),
-  redeemTitle: document.querySelector("#redeem-title"),
-  redeemHint: document.querySelector("#redeem-hint"),
-  redeemBody: document.querySelector("#redeem-body"),
+  couponCode: document.querySelector("#coupon-code"),
+  applyCoupon: document.querySelector("#apply-coupon"),
+  couponChips: document.querySelector("#coupon-chips"),
+  couponStatus: document.querySelector("#coupon-status"),
   redeemCode: document.querySelector("#redeem-code"),
   applyRedeem: document.querySelector("#apply-redeem"),
   redeemStatus: document.querySelector("#redeem-status"),
   redeemMessage: document.querySelector("#redeem-message"),
   payButton: document.querySelector("#pay-button"),
-  payTitle: document.querySelector("#pay-title"),
-  checkoutPowered: document.querySelector("#checkout-powered"),
   summaryProduct: document.querySelector("#summary-product"),
-  summaryProductLabel: document.querySelector("#summary-product-label"),
-  summaryBenefit: document.querySelector("#summary-benefit"),
-  summaryBenefitLabel: document.querySelector("#summary-benefit-label"),
   summarySubtotal: document.querySelector("#summary-subtotal"),
-  summarySubtotalLabel: document.querySelector("#summary-subtotal-label"),
-  summaryDiscountRow: document.querySelector("#summary-discount-row"),
   summaryDiscount: document.querySelector("#summary-discount"),
-  summaryDiscountLabel: document.querySelector("#summary-discount-label"),
   summaryTotal: document.querySelector("#summary-total"),
-  summaryTotalLabel: document.querySelector("#summary-total-label"),
-  checkoutCopy: document.querySelector("#checkout-copy"),
-  noteLanguageTitle: document.querySelector("#note-language-title"),
-  noteLanguageCopy: document.querySelector("#note-language-copy"),
-  noteRegionTitle: document.querySelector("#note-region-title"),
-  noteRegionCopy: document.querySelector("#note-region-copy"),
-  noteDeliveryTitle: document.querySelector("#note-delivery-title"),
-  noteDeliveryCopy: document.querySelector("#note-delivery-copy"),
-  shopNotesEyebrow: document.querySelector("#shop-notes-eyebrow"),
   adminButtons: document.querySelectorAll("[data-admin-tab]"),
   adminPanels: document.querySelectorAll("[data-admin-panel]"),
   productRows: document.querySelector("#product-rows"),
@@ -567,46 +261,22 @@ const elements = {
   successMonitor: document.querySelector("#success-monitor"),
   orderFeed: document.querySelector("#order-feed"),
   loginModal: document.querySelector("#login-modal"),
-  loginEyebrow: document.querySelector("#login-eyebrow"),
-  loginTitle: document.querySelector("#login-title"),
-  loginCopy: document.querySelector(".login-panel .modal-copy"),
-  loginFieldLabel: document.querySelector("#login-field-label"),
-  loginLater: document.querySelector("#login-later"),
   loginAccount: document.querySelector("#login-account"),
   confirmLogin: document.querySelector("#confirm-login"),
   checkoutModal: document.querySelector("#checkout-modal"),
-  checkoutEyebrow: document.querySelector("#checkout-eyebrow"),
-  checkoutTitle: document.querySelector("#checkout-title"),
   modalProduct: document.querySelector("#modal-product"),
-  modalProductLabel: document.querySelector("#modal-product-label"),
-  modalBenefit: document.querySelector("#modal-benefit"),
-  modalBenefitLabel: document.querySelector("#modal-benefit-label"),
   modalSubtotal: document.querySelector("#modal-subtotal"),
-  modalSubtotalLabel: document.querySelector("#modal-subtotal-label"),
-  modalDiscountRow: document.querySelector("#modal-discount-row"),
-  modalDiscount: document.querySelector("#modal-discount"),
-  modalDiscountLabel: document.querySelector("#modal-discount-label"),
+  modalCoupon: document.querySelector("#modal-coupon"),
   modalTotal: document.querySelector("#modal-total"),
-  modalTotalLabel: document.querySelector("#modal-total-label"),
   modalMarket: document.querySelector("#modal-market"),
-  paymentRateLabel: document.querySelector("#payment-rate-label"),
   paymentMethods: document.querySelector("#payment-methods"),
   confirmPayment: document.querySelector("#confirm-payment"),
-  secureNote: document.querySelector(".secure-note"),
   paymentModal: document.querySelector("#payment-modal"),
-  paymentEyebrow: document.querySelector("#payment-eyebrow"),
-  paymentTitle: document.querySelector("#payment-title"),
-  receiptIdLabel: document.querySelector("#receipt-id-label"),
   receiptId: document.querySelector("#receipt-id"),
-  receiptUidLabel: document.querySelector("#receipt-uid-label"),
   receiptUid: document.querySelector("#receipt-uid"),
-  receiptProductLabel: document.querySelector("#receipt-product-label"),
   receiptProduct: document.querySelector("#receipt-product"),
-  receiptTotalLabel: document.querySelector("#receipt-total-label"),
   receiptTotal: document.querySelector("#receipt-total"),
-  receiptBenefitLabel: document.querySelector("#receipt-benefit-label"),
   receiptBenefit: document.querySelector("#receipt-benefit"),
-  receiptContinue: document.querySelector("#receipt-continue"),
   receiptAdmin: document.querySelector("#receipt-admin")
 };
 
@@ -618,19 +288,6 @@ let resumeCheckoutAfterLogin = false;
 toast.className = "toast";
 toast.setAttribute("role", "status");
 document.body.appendChild(toast);
-
-function languageKey() {
-  return state.language === "zh" ? "zh" : "en";
-}
-
-function t(key, variables = {}) {
-  const value = translations[languageKey()][key] || translations.en[key] || key;
-  return value.replace(/\{(\w+)\}/g, (_, name) => variables[name] ?? "");
-}
-
-function setText(element, key, variables) {
-  if (element) element.textContent = t(key, variables);
-}
 
 function cloneDefaultState() {
   return JSON.parse(JSON.stringify(defaultState));
@@ -673,11 +330,11 @@ function setView(nextView, silent = false) {
     history.replaceState(null, "", `#${view}`);
   }
   saveState();
-  if (!silent) showToast(t("toastView", { view: viewName(view) }));
+  if (!silent) showToast(`已切换到${viewName(view)}`);
 }
 
 function viewName(view) {
-  return { home: t("viewHome"), shop: t("viewShop"), admin: t("viewAdminToast") }[view] || view;
+  return { home: "方案官网", shop: "玩家充值站", admin: "运营后台" }[view] || "页面";
 }
 
 function activeProducts() {
@@ -697,19 +354,6 @@ function selectedAdminProduct() {
     state.selectedAdminProductId = state.products[0]?.id || "";
   }
   return state.products.find((product) => product.id === state.selectedAdminProductId) || state.products[0];
-}
-
-function productCopy(product) {
-  const localized = productCopies[languageKey()][product.id] || productCopies.en[product.id] || {};
-  return {
-    name: localized.name || product.name,
-    type: localized.type || product.type,
-    tag: localized.tag || product.tag,
-    token: localized.token || product.token,
-    bonus: localized.bonus || product.bonus,
-    benefit: localized.benefit || product.benefit,
-    delivery: localized.delivery || product.delivery || t("deliveryDefault")
-  };
 }
 
 function activeCoupon() {
@@ -739,14 +383,16 @@ function parsePrice(value) {
 
 function getCart() {
   const product = selectedProduct();
-  if (!product) return { product: null, subtotalUsd: 0, discountUsd: 0, totalUsd: 0 };
-  const subtotalUsd = product.oldPriceUsd || product.priceUsd;
-  const discountUsd = product.oldPriceUsd ? Math.max(product.oldPriceUsd - product.priceUsd, 0) : 0;
+  if (!product) return { product: null, subtotalUsd: 0, discountUsd: 0, totalUsd: 0, coupon: null };
+  const coupon = activeCoupon();
+  const subtotalUsd = product.priceUsd;
+  const discountUsd = coupon ? subtotalUsd * (coupon.discount / 100) : 0;
   return {
     product,
     subtotalUsd,
     discountUsd,
-    totalUsd: product.priceUsd
+    totalUsd: Math.max(subtotalUsd - discountUsd, 0),
+    coupon
   };
 }
 
@@ -772,95 +418,14 @@ function productTone(product) {
   return "topup";
 }
 
-function paymentGroupLabel(group) {
-  return paymentGroupLabels[languageKey()]?.[group] || group;
-}
-
-function renderSelectLabels() {
-  elements.languageSelect.querySelectorAll("option").forEach((option) => {
-    option.textContent = languageOptionLabels[languageKey()][option.value] || option.textContent;
-  });
-  elements.regionSelect.querySelectorAll("option").forEach((option) => {
-    option.textContent = marketLabels[languageKey()][option.value] || option.textContent;
-  });
-}
-
-function renderShopCopy() {
-  document.documentElement.lang = languageKey() === "zh" ? "zh-CN" : "en";
-  elements.navLabels.forEach((link) => {
-    const key = { home: "navHome", shop: "navShop", admin: "navAdmin" }[link.dataset.navLabel];
-    if (key) link.textContent = t(key);
-  });
-  setText(elements.storeSubtitle, "storeSubtitle");
-  setText(elements.languageLabel, "language");
-  setText(elements.regionLabel, "region");
-  setText(elements.shopEyebrow, "shopEyebrow");
-  setText(elements.shopTitle, "shopTitle");
-  setText(elements.shopHeroCopy, "shopHeroCopy");
-  setText(elements.valueCurrencyTitle, "valueCurrencyTitle");
-  setText(elements.valueProductTitle, "valueProductTitle");
-  setText(elements.valueProductCopy, "valueProductCopy");
-  setText(elements.valueCheckoutTitle, "valueCheckoutTitle");
-  setText(elements.valueCheckoutCopy, "valueCheckoutCopy");
-  setText(elements.catalogTitle, "catalogTitle");
-  setText(elements.catalogCopy, "catalogCopy");
-  setText(elements.catalogNote, "catalogNote");
-  setText(elements.playerTitle, "playerTitle");
-  setText(elements.playerCopy, "playerCopy");
-  setText(elements.redeemTitle, "redeemTitle");
-  setText(elements.redeemHint, "redeemHint");
-  setText(elements.payTitle, "payTitle");
-  setText(elements.checkoutPowered, "checkoutPowered");
-  setText(elements.summaryProductLabel, "currentProduct");
-  setText(elements.summaryBenefitLabel, "benefit");
-  setText(elements.summaryDiscountLabel, "autoDiscount");
-  setText(elements.summaryTotalLabel, "totalDue");
-  setText(elements.checkoutCopy, "checkoutCopy");
-  setText(elements.noteLanguageTitle, "noteLanguageTitle");
-  setText(elements.noteLanguageCopy, "noteLanguageCopy");
-  setText(elements.noteRegionTitle, "noteRegionTitle");
-  setText(elements.noteRegionCopy, "noteRegionCopy");
-  setText(elements.noteDeliveryTitle, "noteDeliveryTitle");
-  setText(elements.noteDeliveryCopy, "noteDeliveryCopy");
-  setText(elements.shopNotesEyebrow, "shopNotesEyebrow");
-  setText(elements.loginEyebrow, "loginEyebrow");
-  setText(elements.loginTitle, "loginTitle");
-  setText(elements.loginCopy, "loginCopy");
-  setText(elements.loginFieldLabel, "account");
-  setText(elements.loginLater, "loginLater");
-  setText(elements.confirmLogin, "loginContinue");
-  setText(elements.checkoutEyebrow, "checkoutEyebrow");
-  setText(elements.checkoutTitle, "checkoutTitle");
-  setText(elements.modalProductLabel, "currentProduct");
-  setText(elements.modalBenefitLabel, "benefit");
-  setText(elements.modalDiscountLabel, "autoDiscount");
-  setText(elements.modalTotalLabel, "totalDue");
-  setText(elements.paymentRateLabel, "successRateHint");
-  setText(elements.confirmPayment, "confirmPayment");
-  setText(elements.secureNote, "secureNote");
-  setText(elements.paymentEyebrow, "paymentEyebrow");
-  setText(elements.paymentTitle, "paymentSuccess");
-  setText(elements.receiptIdLabel, "receiptId");
-  setText(elements.receiptUidLabel, "receiptUid");
-  setText(elements.receiptProductLabel, "receiptProduct");
-  setText(elements.receiptTotalLabel, "receiptTotal");
-  setText(elements.receiptBenefitLabel, "receiptBenefit");
-  setText(elements.receiptContinue, "continueShopping");
-  setText(elements.receiptAdmin, "viewAdmin");
-  elements.payButton.textContent = t("checkoutButton");
-  elements.applyRedeem.textContent = t("redeemButton");
-  renderSelectLabels();
-}
-
 function loginLabel() {
-  if (!state.player.loggedIn) return t("login");
+  if (!state.player.loggedIn) return "玩家登录";
   const account = state.player.account || state.player.uid;
   const shortAccount = account.includes("@") ? account.split("@")[0] : account;
-  return t("loggedIn", { account: shortAccount });
+  return `已登录 · ${shortAccount}`;
 }
 
 function renderAll() {
-  renderShopCopy();
   renderControls();
   renderShopProducts();
   renderSummary();
@@ -878,12 +443,12 @@ function renderControls() {
   }
   elements.languageSelect.value = state.language;
   elements.regionSelect.value = state.market;
-  elements.pricingNote.textContent = `${marketLabels[languageKey()][state.market] || markets[state.market].label} · ${t("localPricing")}`;
+  elements.pricingNote.textContent = `${markets[state.market].label} · local pricing`;
   elements.uid.value = state.player.uid;
   ensurePaymentMethod();
   elements.loginButton.textContent = loginLabel();
-  elements.sidebarLoginButton.textContent = state.player.loggedIn ? t("switchAccount") : t("login");
-  elements.playerStatus.textContent = state.player.loggedIn ? t("loggedStatus") : t("loggedOutStatus");
+  elements.sidebarLoginButton.textContent = state.player.loggedIn ? "切换" : "登录";
+  elements.playerStatus.textContent = state.player.loggedIn ? "已登录" : "未登录";
   elements.playerStatus.classList.toggle("is-logged", state.player.loggedIn);
 }
 
@@ -892,35 +457,32 @@ function renderShopProducts() {
   elements.shopProducts.innerHTML = productGroups.map((group) => {
     const groupProducts = products.filter((product) => group.types.includes(product.type));
     if (!groupProducts.length) return "";
-    const title = t(group.key === "topup" ? "groupTopupTitle" : "groupCampaignTitle");
-    const note = t(group.key === "topup" ? "groupTopupNote" : "groupCampaignNote");
     return `
-      <section class="catalog-group" aria-label="${title}">
+      <section class="catalog-group" aria-label="${group.title}">
         <div class="catalog-group-head">
           <div>
-            <h3>${title}</h3>
-            <p>${note}</p>
+            <h3>${group.title}</h3>
+            <p>${group.note}</p>
           </div>
-          <span>${t("itemCount", { count: groupProducts.length })}</span>
+          <span>${groupProducts.length} 个商品</span>
         </div>
         <div class="catalog-grid">
           ${groupProducts.map((product) => {
             const oldPrice = product.oldPriceUsd ? `<small>${formatMarket(product.oldPriceUsd)}</small>` : "";
             const active = product.id === state.selectedProductId;
-            const copy = productCopy(product);
             return `
               <button class="catalog-product ${active ? "is-active" : ""} is-${productTone(product)}" type="button" data-shop-product="${product.id}">
-                <span class="product-badge">${copy.tag}</span>
-                <span class="product-token">${copy.token}</span>
+                <span class="product-badge">${product.tag}</span>
+                <span class="product-token">${product.token}</span>
                 <span class="product-copy">
-                  <strong>${copy.name}</strong>
-                  <small>${copy.type}</small>
-                  <em>${copy.bonus}</em>
+                  <strong>${product.name}</strong>
+                  <small>${product.type}</small>
+                  <em>${product.bonus}</em>
                 </span>
-                <span class="product-benefit">${copy.benefit}</span>
+                <span class="product-benefit">${product.benefit}</span>
                 <span class="product-price">
                   <span>${oldPrice}<b>${formatMarket(product.priceUsd)}</b></span>
-                  <i>${active ? t("selected") : t("select")}</i>
+                  <i>${active ? "已选择" : "选择"}</i>
                 </span>
               </button>
             `;
@@ -936,7 +498,7 @@ function renderShopProducts() {
       saveState();
       renderShopProducts();
       renderSummary();
-      showToast(t("toastSelected", { product: productCopy(selectedProduct()).name }));
+      showToast(`已选择 ${selectedProduct().name}`);
     });
   });
 }
@@ -944,46 +506,62 @@ function renderShopProducts() {
 function renderSummary() {
   const cart = getCart();
   if (!cart.product) return;
-  const copy = productCopy(cart.product);
-  elements.summaryProduct.textContent = copy.name;
-  elements.summaryBenefit.textContent = copy.benefit;
-  elements.summarySubtotalLabel.textContent = cart.discountUsd ? t("originalAmount") : t("itemAmount");
+  elements.couponCode.value = state.couponCode;
+  elements.summaryProduct.textContent = cart.product.name;
   elements.summarySubtotal.textContent = formatMarket(cart.subtotalUsd);
-  elements.summaryDiscountRow.hidden = !cart.discountUsd;
-  elements.summaryDiscount.textContent = cart.discountUsd ? `- ${formatMarket(cart.discountUsd)}` : "";
+  elements.summaryDiscount.textContent = cart.discountUsd ? `- ${formatMarket(cart.discountUsd)}` : formatMarket(0);
   elements.summaryTotal.textContent = formatMarket(cart.totalUsd);
+  elements.couponStatus.textContent = cart.coupon ? `${cart.coupon.code} 已优惠 ${cart.coupon.discount}%` : "优惠码不可用";
+  renderCouponChips();
   renderRedeem();
   renderCheckoutModal();
 }
 
 function renderRedeem() {
   elements.redeemCode.value = state.redeemCode || "";
-  elements.redeemPanel.classList.toggle("is-expanded", state.redeemExpanded || Boolean(state.redeemStatus));
-  elements.toggleRedeem.setAttribute("aria-expanded", String(state.redeemExpanded || Boolean(state.redeemStatus)));
-  if (state.redeemStatus && redeemCodes[state.redeemStatus]) {
-    elements.redeemStatus.textContent = t("redeemDone");
+  if (state.redeemStatus) {
+    elements.redeemStatus.textContent = "已兑换";
     elements.redeemStatus.classList.add("is-redeemed");
-    elements.redeemMessage.textContent = redeemCodes[state.redeemStatus][languageKey()];
+    elements.redeemMessage.textContent = state.redeemStatus;
   } else {
-    elements.redeemStatus.textContent = t("redeemOptional");
+    elements.redeemStatus.textContent = "可选";
     elements.redeemStatus.classList.remove("is-redeemed");
-    elements.redeemMessage.textContent = t("redeemDefault");
+    elements.redeemMessage.textContent = "兑换码独立发放权益，不影响当前订单折扣。";
   }
+}
+
+function renderCouponChips() {
+  elements.couponChips.innerHTML = state.coupons.map((coupon) => `
+    <button type="button" class="${state.couponCode.toUpperCase() === coupon.code ? "is-selected" : ""}" data-coupon-chip="${coupon.code}">
+      ${coupon.code} · ${coupon.discount}%${coupon.active ? "" : " · 暂停"}
+    </button>
+  `).join("");
+
+  elements.couponChips.querySelectorAll("[data-coupon-chip]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const coupon = state.coupons.find((item) => item.code === button.dataset.couponChip);
+      if (!coupon.active) {
+        showToast(`${coupon.code} 当前已暂停`);
+        return;
+      }
+      state.couponCode = coupon.code;
+      saveState();
+      renderSummary();
+      renderMarketing();
+      showToast(`已应用优惠码 ${coupon.code}`);
+    });
+  });
 }
 
 function renderCheckoutModal() {
   const cart = getCart();
   if (!cart.product) return;
   const market = markets[state.market] || markets.ID;
-  const copy = productCopy(cart.product);
-  elements.modalProduct.textContent = copy.name;
-  elements.modalBenefit.textContent = copy.benefit;
-  elements.modalSubtotalLabel.textContent = cart.discountUsd ? t("originalAmount") : t("itemAmount");
+  elements.modalProduct.textContent = cart.product.name;
   elements.modalSubtotal.textContent = formatMarket(cart.subtotalUsd);
-  elements.modalDiscountRow.hidden = !cart.discountUsd;
-  elements.modalDiscount.textContent = cart.discountUsd ? `- ${formatMarket(cart.discountUsd)}` : "";
+  elements.modalCoupon.textContent = cart.coupon ? `${cart.coupon.code} · -${cart.coupon.discount}%` : "未使用";
   elements.modalTotal.textContent = formatMarket(cart.totalUsd);
-  elements.modalMarket.textContent = t("choosePayment", { market: marketLabels[languageKey()][state.market] || market.label });
+  elements.modalMarket.textContent = `请选择支付方式 · ${market.label}`;
   renderPaymentMethods();
 }
 
@@ -996,7 +574,7 @@ function renderPaymentMethods() {
   }, {});
   elements.paymentMethods.innerHTML = Object.entries(grouped).map(([group, methods]) => `
     <section class="payment-group">
-      <h3>${paymentGroupLabel(group)}</h3>
+      <h3>${group}</h3>
       <div>
         ${methods.map((method) => `
           <button class="payment-method ${method.id === state.selectedPaymentMethod ? "is-selected" : ""}" type="button" data-payment-method="${method.id}">
@@ -1014,7 +592,7 @@ function renderPaymentMethods() {
       state.selectedPaymentMethod = button.dataset.paymentMethod;
       saveState();
       renderPaymentMethods();
-      showToast(t("toastPaymentMethod", { method: selectedPaymentMethod().name }));
+      showToast(`已选择 ${selectedPaymentMethod().name}`);
     });
   });
 }
@@ -1143,33 +721,41 @@ function renderDashboard() {
   `).join("");
 }
 
+function applyCoupon() {
+  state.couponCode = elements.couponCode.value.trim().toUpperCase();
+  saveState();
+  renderSummary();
+  renderMarketing();
+  const coupon = activeCoupon();
+  showToast(coupon ? `已应用 ${coupon.code}，优惠 ${coupon.discount}%` : "优惠码无效或已暂停");
+}
+
 function applyRedeem() {
   const code = elements.redeemCode.value.trim().toUpperCase();
   state.redeemCode = code;
-  state.redeemStatus = redeemCodes[code] ? code : "";
-  if (state.redeemStatus) state.redeemExpanded = true;
+  state.redeemStatus = redeemCodes[code] || "";
   saveState();
   renderRedeem();
-  showToast(state.redeemStatus ? t("toastRedeemed", { code }) : t("redeemInvalid"));
+  showToast(state.redeemStatus ? `已兑换 ${code}` : "兑换码无效，请检查后重试");
 }
 
 function checkout() {
   const cart = getCart();
   const uid = elements.uid.value.trim();
   if (!uid) {
-    showToast(t("toastNeedUid"));
+    showToast("请先输入玩家 UID");
     elements.uid.focus();
     return;
   }
   if (!cart.product) {
-    showToast(t("toastNoProduct"));
+    showToast("请先上架至少一个商品");
     return;
   }
   state.player.uid = uid;
   if (!state.player.loggedIn) {
     resumeCheckoutAfterLogin = true;
     showLoginModal();
-    showToast(t("toastLoginFirst"));
+    showToast("请先登录玩家账号");
     return;
   }
   saveState();
@@ -1187,10 +773,10 @@ function confirmPayment() {
     id: `WP-${Math.floor(1000 + Math.random() * 9000)}`,
     uid,
     productId: cart.product.id,
-    productName: productCopy(cart.product).name,
+    productName: cart.product.name,
     market: state.market,
     totalUsd: cart.totalUsd,
-    coupon: "",
+    coupon: cart.coupon?.code || "",
     paymentMethod: selectedPaymentMethod()?.name || "WooshPay",
     createdAt: new Date().toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit" })
   };
@@ -1203,16 +789,15 @@ function confirmPayment() {
   renderReceipt(order, cart);
   hideCheckoutModal();
   showPaymentModal();
-  showToast(t("toastPaid"));
+  showToast("WooshPay 支付成功，订单已写入后台");
 }
 
 function renderReceipt(order, cart) {
-  const copy = productCopy(cart.product);
   elements.receiptId.textContent = order.id;
   elements.receiptUid.textContent = order.uid;
   elements.receiptProduct.textContent = order.productName;
   elements.receiptTotal.textContent = formatMarket(order.totalUsd, order.market);
-  elements.receiptBenefit.textContent = copy.delivery;
+  elements.receiptBenefit.textContent = cart.product.delivery;
 }
 
 function showPaymentModal() {
@@ -1254,7 +839,7 @@ function confirmLogin() {
   saveState();
   renderControls();
   hideLoginModal();
-  showToast(t("toastLoggedIn", { account }));
+  showToast(`已登录 ${account}`);
   if (resumeCheckoutAfterLogin) {
     resumeCheckoutAfterLogin = false;
     checkout();
@@ -1360,21 +945,19 @@ window.addEventListener("hashchange", () => setView(location.hash.replace("#", "
 elements.languageSelect.addEventListener("change", () => {
   state.language = elements.languageSelect.value;
   saveState();
-  renderAll();
-  showToast(t("toastLanguage", { language: elements.languageSelect.selectedOptions[0].textContent }));
+  showToast(`已切换语言：${elements.languageSelect.selectedOptions[0].textContent}`);
 });
 
 elements.regionSelect.addEventListener("change", () => {
   state.market = elements.regionSelect.value;
   saveState();
   renderAll();
-  showToast(t("toastRegion", { region: elements.regionSelect.selectedOptions[0].textContent }));
+  showToast(`已切换国家/地区：${elements.regionSelect.selectedOptions[0].textContent}`);
 });
 
-elements.toggleRedeem.addEventListener("click", () => {
-  state.redeemExpanded = !state.redeemExpanded;
-  saveState();
-  renderRedeem();
+elements.applyCoupon.addEventListener("click", applyCoupon);
+elements.couponCode.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") applyCoupon();
 });
 elements.applyRedeem.addEventListener("click", applyRedeem);
 elements.redeemCode.addEventListener("keydown", (event) => {

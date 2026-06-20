@@ -1966,44 +1966,6 @@ p {
   padding: 0 0 12px;
 }
 
-.redeem-panel {
-  background: rgba(255, 255, 255, 0.78);
-  box-shadow: 0 10px 24px rgba(18, 28, 45, 0.05);
-}
-
-.redeem-toggle {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: center;
-  padding: 0;
-  border: 0;
-  color: var(--ink);
-  background: transparent;
-  text-align: left;
-}
-
-.redeem-toggle span {
-  display: grid;
-  gap: 3px;
-  min-width: 0;
-}
-
-.redeem-toggle small {
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.45;
-}
-
-.redeem-body {
-  margin-top: 12px;
-}
-
-.redeem-panel:not(.is-expanded) .redeem-body {
-  display: none;
-}
-
 .player-panel p,
 .redeem-panel p {
   margin: 10px 0 0;
