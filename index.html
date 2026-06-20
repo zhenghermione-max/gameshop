@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WooshPay GameShop 商业化 Demo</title>
-    <link rel="stylesheet" href="./styles.css?v=lite-v6">
+    <link rel="stylesheet" href="./styles.css?v=lite-v7">
   </head>
   <body>
     <header class="topbar">
@@ -226,7 +226,7 @@
                   </div>
                   <div>
                     <strong>WooshPay Checkout</strong>
-                    <span>优惠码与订单摘要实时联动</span>
+                    <span>商品价格与支付方式实时联动</span>
                   </div>
                 </section>
 
@@ -267,26 +267,11 @@
                   <p id="redeem-message">兑换码独立发放权益，不影响当前订单折扣。</p>
                 </section>
 
-                <section class="checkout-box">
-                  <div class="checkout-title">
-                    <h2>订单摘要</h2>
-                    <span>Powered by WooshPay</span>
-                  </div>
-                  <div class="checkout-summary" aria-label="订单摘要">
-                    <p><span>当前商品</span><strong id="summary-product">600 钻石</strong></p>
-                    <p><span>商品金额</span><strong id="summary-subtotal">Rp 135.000</strong></p>
-                    <p><span>活动优惠</span><strong id="summary-discount">- Rp 13.500</strong></p>
-                    <p class="summary-total"><span>应付金额</span><strong id="summary-total">Rp 121.500</strong></p>
-                  </div>
-                  <button class="pay-now-button" type="button" id="pay-button">Buy Now</button>
-                  <p>由 WooshPay 提供支付体验，到账权益以游戏侧发放结果为准。</p>
-                </section>
-
                 <section class="shop-notes web-shop-notes">
                   <p class="eyebrow">Global Web Shop</p>
                   <ul class="clean-list">
                     <li><strong>语言展示：</strong>语言切换用于演示本地化入口，不影响支付流程。</li>
-                    <li><strong>地区与货币：</strong>国家/地区决定商品与订单摘要中的展示货币。</li>
+                    <li><strong>地区与货币：</strong>国家/地区决定商品与结算弹窗中的展示货币。</li>
                     <li><strong>权益发放：</strong>实际到账以游戏侧商品体系或发货接口为准。</li>
                   </ul>
                 </section>
@@ -483,6 +468,6 @@
         </div>
       </div>
     </div>
-    <script src="./script.js?v=lite-v6"></script>
+    <script src="./script.js?v=lite-v7"></script>
   </body>
 </html>

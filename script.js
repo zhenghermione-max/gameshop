@@ -218,11 +218,6 @@ const elements = {
   applyRedeem: document.querySelector("#apply-redeem"),
   redeemStatus: document.querySelector("#redeem-status"),
   redeemMessage: document.querySelector("#redeem-message"),
-  payButton: document.querySelector("#pay-button"),
-  summaryProduct: document.querySelector("#summary-product"),
-  summarySubtotal: document.querySelector("#summary-subtotal"),
-  summaryDiscount: document.querySelector("#summary-discount"),
-  summaryTotal: document.querySelector("#summary-total"),
   adminButtons: document.querySelectorAll("[data-admin-tab]"),
   adminPanels: document.querySelectorAll("[data-admin-panel]"),
   productRows: document.querySelector("#product-rows"),
@@ -472,9 +467,8 @@ function renderShopProducts() {
         <div class="catalog-grid">
           ${groupProducts.map((product) => {
             const oldPrice = product.oldPriceUsd ? `<small>${formatMarket(product.oldPriceUsd)}</small>` : "";
-            const active = product.id === state.selectedProductId;
             return `
-              <button class="catalog-product ${active ? "is-active" : ""} is-${productTone(product)}" type="button" data-shop-product="${product.id}">
+              <button class="catalog-product is-${productTone(product)}" type="button" data-shop-product="${product.id}">
                 <span class="product-badge">${product.tag}</span>
                 <span class="product-token">${product.token}</span>
                 <span class="product-copy">
@@ -485,7 +479,7 @@ function renderShopProducts() {
                 <span class="product-benefit">${product.benefit}</span>
                 <span class="product-price">
                   <span>${oldPrice}<b>${formatMarket(product.priceUsd)}</b></span>
-                  <i>${active ? "已选择" : "选择"}</i>
+                  <i>立即充值</i>
                 </span>
               </button>
             `;
@@ -499,9 +493,8 @@ function renderShopProducts() {
     button.addEventListener("click", () => {
       state.selectedProductId = button.dataset.shopProduct;
       saveState();
-      renderShopProducts();
       renderSummary();
-      showToast(`已选择 ${selectedProduct().name}`);
+      checkout();
     });
   });
 }
@@ -510,10 +503,6 @@ function renderSummary() {
   const cart = getCart();
   if (!cart.product) return;
   elements.couponCode.value = state.couponCode;
-  elements.summaryProduct.textContent = cart.product.name;
-  elements.summarySubtotal.textContent = formatMarket(cart.subtotalUsd);
-  elements.summaryDiscount.textContent = cart.discountUsd ? `- ${formatMarket(cart.discountUsd)}` : formatMarket(0);
-  elements.summaryTotal.textContent = formatMarket(cart.totalUsd);
   elements.couponStatus.textContent = cart.coupon ? `${cart.coupon.code} 已优惠 ${cart.coupon.discount}%` : "优惠码不可用";
   renderCouponChips();
   renderRedeem();
@@ -980,7 +969,6 @@ elements.loginAccount.addEventListener("keydown", (event) => {
 elements.loginUid.addEventListener("keydown", (event) => {
   if (event.key === "Enter") confirmLogin();
 });
-elements.payButton.addEventListener("click", checkout);
 elements.confirmPayment.addEventListener("click", confirmPayment);
 
 elements.adminButtons.forEach((button) => {
