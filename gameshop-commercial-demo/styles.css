@@ -1589,11 +1589,11 @@ p {
 
 .table-row {
   display: grid;
-  grid-template-columns: 1.1fr 0.62fr 0.68fr 0.86fr 0.72fr 0.62fr 1fr;
-  gap: 12px;
+  grid-template-columns: minmax(170px, 1fr) minmax(150px, 0.82fr) minmax(220px, 1.25fr) minmax(88px, 0.5fr) minmax(88px, 0.45fr) minmax(128px, 0.72fr);
+  gap: 18px;
   width: 100%;
-  min-height: 60px;
-  padding: 0 16px;
+  min-height: 88px;
+  padding: 18px 20px;
   border: 0;
   border-bottom: 1px solid var(--line);
   color: var(--ink);
@@ -1604,17 +1604,22 @@ p {
 
 .product-record {
   cursor: pointer;
+  transition: background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.product-record:hover {
+  background: #f8fbff;
 }
 
 .row-actions {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .row-actions button {
-  min-height: 30px;
-  padding: 0 10px;
+  min-height: 34px;
+  padding: 0 12px;
   border: 1px solid #bed0ff;
   border-radius: 999px;
   color: var(--blue);
@@ -1628,7 +1633,9 @@ p {
 }
 
 .table-head {
-  min-height: 48px;
+  min-height: 56px;
+  padding-top: 0;
+  padding-bottom: 0;
   color: var(--muted);
   background: #f6f9ff;
   font-size: 13px;
@@ -1637,7 +1644,8 @@ p {
 
 .table-row.is-selected {
   color: var(--blue);
-  background: var(--blue-soft);
+  background: #edf4ff;
+  box-shadow: inset 4px 0 0 var(--blue);
 }
 
 .edit-panel {
@@ -2216,8 +2224,8 @@ p {
 }
 
 .product-table .table-row {
-  grid-template-columns: minmax(160px, 1fr) minmax(160px, 0.9fr) minmax(190px, 1.1fr) 0.48fr 0.46fr 0.72fr;
-  min-height: 76px;
+  grid-template-columns: minmax(170px, 1fr) minmax(150px, 0.82fr) minmax(220px, 1.25fr) minmax(88px, 0.5fr) minmax(88px, 0.45fr) minmax(128px, 0.72fr);
+  min-height: 88px;
 }
 
 .table-row b,
@@ -2231,10 +2239,10 @@ p {
 }
 
 .table-row small {
-  margin-top: 4px;
+  margin-top: 6px;
   color: var(--muted);
   font-size: 12px;
-  line-height: 1.35;
+  line-height: 1.45;
 }
 
 .table-row.is-selected b {
@@ -2369,11 +2377,33 @@ p {
   }
 
   .product-table {
-    overflow-x: auto;
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .product-table .table-head {
+    display: none;
+  }
+
+  #product-rows {
+    display: grid;
+    gap: 12px;
   }
 
   .product-table .table-row {
-    min-width: 900px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.86fr) minmax(0, 1.08fr);
+    min-width: 0;
+    min-height: 0;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 10px 24px rgba(18, 28, 45, 0.05);
+  }
+
+  .product-table .row-actions {
+    justify-content: flex-start;
   }
 }
 

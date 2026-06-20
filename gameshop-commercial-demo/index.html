@@ -252,7 +252,7 @@
                     <input id="uid" value="MR-2048-7761" aria-label="玩家 ID / 游戏 UID">
                     <button type="button" id="sidebar-login-button">登录</button>
                   </div>
-                  <p>登录后再进入结算，玩家 UID 用于游戏侧发货和订单归因。</p>
+                  <p>登录后再进入结算，玩家 UID 用于权益发放和订单归因。</p>
                 </section>
 
                 <section class="coupon-panel" aria-label="优惠码">
@@ -383,10 +383,10 @@
                     <label>展示价格<input id="edit-price" value="$9.99" aria-label="展示价格"></label>
                     <label>商品类型<input id="edit-type" value="钻石" aria-label="商品类型"></label>
                     <label>赠送<input id="edit-bonus" value="额外 +50%" aria-label="赠送"></label>
-                    <label>发放方式<input id="edit-delivery" value="游戏侧发货 / API 回调" aria-label="发放方式"></label>
+                    <label>发放方式<input id="edit-delivery" value="游戏接口自动发放" aria-label="发放方式"></label>
                     <label class="wide">权益说明<input id="benefit-input" value="600 crystals + bonus 50%" aria-label="权益说明"></label>
                   </div>
-                  <p class="logic-note">权益说明可在充值站展示；实际发放结果以游戏侧商品体系或发货接口为准。</p>
+                  <p class="logic-note">权益说明可在充值站展示；实际到账以游戏商品配置和发放接口为准。</p>
                   <div class="panel-actions">
                     <button type="button" id="save-product">保存修改</button>
                     <button type="button" id="preview-product">预览玩家站</button>
@@ -428,7 +428,7 @@
           <label>商品类型<input id="new-product-type" value="限时礼包" aria-label="商品类型"></label>
           <label>活动标签<input id="new-product-tag" value="限时" aria-label="活动标签"></label>
           <label class="wide">权益说明<input id="new-product-benefit" value="1,980 💎 + 限定头像框" aria-label="权益说明"></label>
-          <label class="wide">发放方式<input id="new-product-delivery" value="游戏侧发货 / API 回调" aria-label="发放方式"></label>
+          <label class="wide">发放方式<input id="new-product-delivery" value="游戏接口自动发放" aria-label="发放方式"></label>
         </div>
         <div class="panel-actions">
           <button type="button" id="save-draft-product">保存草稿</button>
@@ -484,7 +484,7 @@
           <p><span>玩家 UID</span><strong id="receipt-uid">MR-2048-7761</strong></p>
           <p><span>充值商品</span><strong id="receipt-product">600 钻石</strong></p>
           <p><span>支付金额</span><strong id="receipt-total">Rp 121.500</strong></p>
-          <p><span>到账说明</span><strong id="receipt-benefit">游戏侧发货 / API 回调</strong></p>
+          <p><span>到账说明</span><strong id="receipt-benefit">游戏接口自动发放</strong></p>
         </div>
         <div class="panel-actions">
           <button type="button" data-close-payment>继续逛逛</button>

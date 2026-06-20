@@ -30,7 +30,7 @@ const defaultState = {
       tag: "基础档位",
       bonus: "300 💎",
       benefit: "300 diamonds",
-      delivery: "游戏侧发货 / API 回调",
+      delivery: "游戏接口自动发放",
       status: "active",
       sold: 776
     },
@@ -43,7 +43,7 @@ const defaultState = {
       tag: "热销",
       bonus: "+15% = 1,127 💎",
       benefit: "980 diamonds + bonus 147 diamonds",
-      delivery: "游戏侧发货 / API 回调",
+      delivery: "游戏接口自动发放",
       status: "active",
       sold: 498
     },
@@ -56,7 +56,7 @@ const defaultState = {
       tag: "高价值",
       bonus: "+20% = 2,376 💎",
       benefit: "1,980 diamonds + bonus 396 diamonds",
-      delivery: "游戏侧发货 / API 回调",
+      delivery: "游戏接口自动发放",
       status: "active",
       sold: 842
     },
@@ -69,7 +69,7 @@ const defaultState = {
       tag: "首充双倍",
       bonus: "额外赠送 300 💎",
       benefit: "300 diamonds + first recharge bonus 300 diamonds",
-      delivery: "游戏侧发货 / API 回调",
+      delivery: "游戏接口自动发放",
       status: "active",
       sold: 624
     },
@@ -83,7 +83,7 @@ const defaultState = {
       tag: "新手推荐",
       bonus: "680 💎 + 3 天加速道具",
       benefit: "680 diamonds + 3-day booster",
-      delivery: "游戏侧发货 / API 回调",
+      delivery: "游戏接口自动发放",
       status: "active",
       sold: 587
     },
@@ -97,7 +97,7 @@ const defaultState = {
       tag: "活动限时",
       bonus: "1,980 💎 + 限定头像框",
       benefit: "1,980 diamonds + limited avatar frame",
-      delivery: "游戏侧发货 / API 回调",
+      delivery: "游戏接口自动发放",
       status: "active",
       sold: 412
     }
@@ -293,17 +293,25 @@ function cloneDefaultState() {
   return JSON.parse(JSON.stringify(defaultState));
 }
 
+function normalizeState(nextState) {
+  nextState.products = nextState.products.map((product) => ({
+    ...product,
+    delivery: product.delivery === "游戏侧发货 / API 回调" ? "游戏接口自动发放" : product.delivery
+  }));
+  return nextState;
+}
+
 function loadState() {
   try {
     const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY));
     if (parsed && Array.isArray(parsed.products) && Array.isArray(parsed.coupons)) {
       const base = cloneDefaultState();
-      return { ...base, ...parsed, player: { ...base.player, ...(parsed.player || {}) } };
+      return normalizeState({ ...base, ...parsed, player: { ...base.player, ...(parsed.player || {}) } });
     }
   } catch {
     localStorage.removeItem(STORAGE_KEY);
   }
-  return cloneDefaultState();
+  return normalizeState(cloneDefaultState());
 }
 
 function saveState() {
@@ -903,7 +911,7 @@ function addNewProduct(status) {
     tag: elements.newProductTag.value.trim() || "自定义",
     bonus: elements.newProductBenefit.value.trim() || "Custom reward",
     benefit: elements.newProductBenefit.value.trim() || "Custom reward",
-    delivery: elements.newProductDelivery.value.trim() || "游戏侧发货 / API 回调",
+    delivery: elements.newProductDelivery.value.trim() || "游戏接口自动发放",
     status,
     sold: 0
   };
