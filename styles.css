@@ -1960,7 +1960,6 @@ p {
   line-height: 1.45;
 }
 
-.player-panel,
 .redeem-panel {
   padding: 16px;
   border: 1px solid var(--line);
@@ -1969,12 +1968,10 @@ p {
   box-shadow: var(--shadow);
 }
 
-.player-panel .shop-section-head,
 .redeem-panel .shop-section-head {
   padding: 0 0 12px;
 }
 
-.player-panel p,
 .redeem-panel p {
   margin: 10px 0 0;
   color: var(--muted);
@@ -1982,14 +1979,12 @@ p {
   line-height: 1.55;
 }
 
-.player-row,
 .redeem-row {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 8px;
 }
 
-.player-row button,
 .redeem-row button,
 .pay-now-button,
 .pay-confirm-button {
@@ -2002,7 +1997,6 @@ p {
   font-weight: 900;
 }
 
-#player-status,
 #redeem-status {
   padding: 5px 9px;
   border-radius: 999px;
@@ -2011,7 +2005,6 @@ p {
   font-weight: 900;
 }
 
-#player-status.is-logged,
 #redeem-status.is-redeemed {
   color: #0c6b47;
   background: #ddf7e9;
@@ -2486,7 +2479,6 @@ p {
   }
 
   .web-shop-top .shop-controls,
-  .player-row,
   .redeem-row,
   .payment-group > div,
   .revenue-summary {

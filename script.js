@@ -209,10 +209,7 @@ const elements = {
   regionSelect: document.querySelector("#region-select"),
   pricingNote: document.querySelector("#pricing-note"),
   loginButton: document.querySelector("#login-button"),
-  sidebarLoginButton: document.querySelector("#sidebar-login-button"),
-  playerStatus: document.querySelector("#player-status"),
   shopProducts: document.querySelector("#shop-products"),
-  uid: document.querySelector("#uid"),
   couponCode: document.querySelector("#coupon-code"),
   applyCoupon: document.querySelector("#apply-coupon"),
   couponChips: document.querySelector("#coupon-chips"),
@@ -262,6 +259,7 @@ const elements = {
   orderFeed: document.querySelector("#order-feed"),
   loginModal: document.querySelector("#login-modal"),
   loginAccount: document.querySelector("#login-account"),
+  loginUid: document.querySelector("#login-uid"),
   confirmLogin: document.querySelector("#confirm-login"),
   checkoutModal: document.querySelector("#checkout-modal"),
   modalProduct: document.querySelector("#modal-product"),
@@ -452,12 +450,9 @@ function renderControls() {
   elements.languageSelect.value = state.language;
   elements.regionSelect.value = state.market;
   elements.pricingNote.textContent = `${markets[state.market].label} · local pricing`;
-  elements.uid.value = state.player.uid;
+  if (elements.loginUid) elements.loginUid.value = state.player.uid;
   ensurePaymentMethod();
   elements.loginButton.textContent = loginLabel();
-  elements.sidebarLoginButton.textContent = state.player.loggedIn ? "切换" : "登录";
-  elements.playerStatus.textContent = state.player.loggedIn ? "已登录" : "未登录";
-  elements.playerStatus.classList.toggle("is-logged", state.player.loggedIn);
 }
 
 function renderShopProducts() {
@@ -749,10 +744,11 @@ function applyRedeem() {
 
 function checkout() {
   const cart = getCart();
-  const uid = elements.uid.value.trim();
+  const uid = (state.player.uid || elements.loginUid?.value || "").trim();
   if (!uid) {
+    resumeCheckoutAfterLogin = true;
+    showLoginModal();
     showToast("请先输入玩家 UID");
-    elements.uid.focus();
     return;
   }
   if (!cart.product) {
@@ -773,7 +769,7 @@ function checkout() {
 
 function confirmPayment() {
   const cart = getCart();
-  const uid = elements.uid.value.trim();
+  const uid = (state.player.uid || elements.loginUid?.value || "").trim();
   if (!uid || !cart.product) return;
   state.player.uid = uid;
 
@@ -830,6 +826,7 @@ function hideCheckoutModal() {
 
 function showLoginModal() {
   elements.loginAccount.value = state.player.account || "player@mythicrealm.com";
+  if (elements.loginUid) elements.loginUid.value = state.player.uid || "MR-2048-7761";
   elements.loginModal.classList.add("is-open");
   elements.loginModal.setAttribute("aria-hidden", "false");
 }
@@ -840,10 +837,11 @@ function hideLoginModal() {
 }
 
 function confirmLogin() {
-  const account = elements.loginAccount.value.trim() || elements.uid.value.trim();
+  const uid = (elements.loginUid?.value || "").trim();
+  const account = elements.loginAccount.value.trim() || uid;
   state.player.account = account;
   state.player.loggedIn = true;
-  state.player.uid = elements.uid.value.trim() || state.player.uid;
+  state.player.uid = uid || state.player.uid;
   saveState();
   renderControls();
   hideLoginModal();
@@ -975,12 +973,11 @@ elements.loginButton.addEventListener("click", () => {
   resumeCheckoutAfterLogin = false;
   showLoginModal();
 });
-elements.sidebarLoginButton.addEventListener("click", () => {
-  resumeCheckoutAfterLogin = false;
-  showLoginModal();
-});
 elements.confirmLogin.addEventListener("click", confirmLogin);
 elements.loginAccount.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") confirmLogin();
+});
+elements.loginUid.addEventListener("keydown", (event) => {
   if (event.key === "Enter") confirmLogin();
 });
 elements.payButton.addEventListener("click", checkout);

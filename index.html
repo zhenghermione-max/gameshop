@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WooshPay GameShop 商业化 Demo</title>
-    <link rel="stylesheet" href="./styles.css?v=lite-v5">
+    <link rel="stylesheet" href="./styles.css?v=lite-v6">
   </head>
   <body>
     <header class="topbar">
@@ -243,18 +243,6 @@
               </div>
 
               <aside class="checkout-sidebar">
-                <section class="player-panel" aria-label="玩家信息">
-                  <div class="shop-section-head">
-                    <h2>玩家 ID / 游戏 UID</h2>
-                    <span id="player-status">未登录</span>
-                  </div>
-                  <div class="player-row">
-                    <input id="uid" value="MR-2048-7761" aria-label="玩家 ID / 游戏 UID">
-                    <button type="button" id="sidebar-login-button">登录</button>
-                  </div>
-                  <p>登录后再进入结算，玩家 UID 用于权益发放和订单归因。</p>
-                </section>
-
                 <section class="coupon-panel" aria-label="优惠码">
                   <div class="shop-section-head">
                     <h2>优惠码</h2>
@@ -446,6 +434,9 @@
         <label class="login-field">账号
           <input id="login-account" value="player@mythicrealm.com" aria-label="玩家登录账号">
         </label>
+        <label class="login-field">玩家 ID / 游戏 UID
+          <input id="login-uid" value="MR-2048-7761" aria-label="玩家 ID / 游戏 UID">
+        </label>
         <div class="panel-actions">
           <button type="button" data-close-login>稍后再说</button>
           <button class="primary-btn small" type="button" id="confirm-login">登录并继续</button>
@@ -492,6 +483,6 @@
         </div>
       </div>
     </div>
-    <script src="./script.js?v=lite-v5"></script>
+    <script src="./script.js?v=lite-v6"></script>
   </body>
 </html>
